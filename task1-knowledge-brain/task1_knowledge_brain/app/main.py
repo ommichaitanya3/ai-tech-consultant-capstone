@@ -8,9 +8,9 @@ from schemas import (
     ResolveRequest,
     IngestionRequest,
 )
-from .retrieval import search
-from .llm import answer_with_claude
-from .ingestion import crawl_sitemap
+from retrieval import search
+from llm import answer_with_claude
+from ingestion import crawl_sitemap
 
 app = FastAPI(
     title="Task 1 — Knowledge Brain",
