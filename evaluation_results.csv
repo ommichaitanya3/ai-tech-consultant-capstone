@@ -1,0 +1,7 @@
+task,case_id,model_or_config,prompt_version,expected,actual,quality_score,latency_ms,cost_usd,passed,failure_reason
+Task1,T1-AUTO-01,existing-implementation,baseline,Health endpoint responds,Health endpoint test passed,,,,"true",
+Task1,T1-AUTO-02,existing-implementation,baseline,Unknown question escalates,Unknown question escalation test passed,,,,"true",
+Task2,T2-AUTO-01,existing-implementation,baseline,50 unique synthetic emails,Dataset test passed,,,,"true",
+Task2,T2-AUTO-02,existing-implementation,baseline,Supported risk levels,Supported risk levels test passed,,,,"true",
+Task3,T3-AUTO-01,existing-implementation,baseline,Health endpoint responds,Health endpoint test passed,,,,"true",
+Task3,T3-AUTO-02,existing-implementation,baseline,Compare requires baseline,Missing baseline validation test passed,,,,"true",
