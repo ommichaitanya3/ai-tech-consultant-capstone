@@ -1,4 +1,4 @@
-from .config import API_KEY, MODEL
+from config import API_KEY, MODEL
 
 def answer_with_claude(question: str, sources: list[dict]) -> str | None:
     if not API_KEY or not sources:
