@@ -2,7 +2,7 @@ import asyncio, hashlib
 from urllib.parse import urlparse
 import httpx
 from bs4 import BeautifulSoup
-from .db import connect
+from db import connect
 
 def parse_article(html: str):
     soup = BeautifulSoup(html, "html.parser")
