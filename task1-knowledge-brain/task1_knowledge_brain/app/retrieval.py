@@ -1,5 +1,5 @@
 ﻿import re
-from .db import connect
+from db import connect
 
 STOP = {"the","a","an","is","are","how","do","i","to","and","or","for","of","in","on","my","can","please","what","with","it","this","that","where","change"}
 
