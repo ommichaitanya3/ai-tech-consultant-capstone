@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 
-from .db import init_db, connect
-from .schemas import (
+from db import init_db, connect
+from schemas import (
     QueryRequest,
     QueryResponse,
     EscalationRequest,
