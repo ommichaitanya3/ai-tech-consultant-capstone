@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Tech Consultant</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f5f9;
+            color: #172033;
+        }
+
+        header {
+            background: #172554;
+            color: white;
+            padding: 24px;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+        }
+
+        header p {
+            margin: 0;
+            color: #cbd5e1;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            background: white;
+            padding: 14px 24px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        nav button,
+        .action {
+            border: 0;
+            border-radius: 8px;
+            padding: 12px 18px;
+            background: #e2e8f0;
+            color: #172033;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        nav button.active,
+        .action {
+            background: #2563eb;
+            color: white;
+        }
+
+        main {
+            padding: 24px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .panel {
+            display: none;
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #0000000c;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 16px 0 8px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font: inherit;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .action {
+            margin-top: 16px;
+        }
+
+        .result {
+            margin-top: 18px;
+            padding: 16px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        .result:empty {
+            display: none;
+        }
+
+        .answer-text {
+            white-space: pre-wrap;
+        }
+
+        .source-card {
+            margin: 14px 0;
+            padding: 14px;
+            background: white;
+            border: 1px solid #dbeafe;
+            border-radius: 8px;
+        }
+
+        .source-card p {
+            margin: 8px 0;
+        }
+
+        .source-card a {
+            color: #1d4ed8;
+            overflow-wrap: anywhere;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: #dbeafe;
+            color: #1e40af;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .hint {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        iframe {
+            width: 100%;
+            height: 850px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 12px;
+            }
+
+            .panel {
+                padding: 16px;
+            }
+
+            nav {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>AI Tech Consultant</h1>
+        <p>Knowledge Brain · Inbox Agent · Meeting-to-Scope</p>
+    </header>
+
+    <nav>
+        <button class="active" data-tab="knowledge">Knowledge Brain</button>
+        <button data-tab="inbox">Inbox Agent</button>
+        <button data-tab="meeting">Meeting-to-Scope</button>
+    </nav>
+
+    <main>
+        <!-- TASK 1: KNOWLEDGE BRAIN -->
+        <section class="panel active" id="knowledge">
+            <h2>Knowledge Brain</h2>
+            <p class="hint">
+                Ask a question and get an answer with supporting documentation sources.
+            </p>
+
+            <form id="knowledgeForm">
+                <label for="question">Your question</label>
+                <input id="question" required placeholder="How can I contact support?" />
+
+                <label for="topK">Number of sources</label>
+                <input id="topK" type="number" min="1" max="10" value="4" />
+
+                <button class="action" type="submit">Search Knowledge</button>
+            </form>
+
+            <div class="result" id="knowledgeResult" aria-live="polite">
+                Enter a question to search the Knowledge Brain.
+            </div>
+        </section>
+
+        <!-- TASK 2: INBOX AGENT -->
+        <section class="panel" id="inbox">
+            <h2>Inbox Agent</h2>
+            <p class="hint">
+                Review email drafts and approve, edit, reject, or escalate them.
+                Email delivery is simulated; no real email is sent.
+            </p>
+
+            <iframe src="/inbox" title="Inbox Agent Review"></iframe>
+        </section>
+
+        <!-- TASK 3: MEETING-TO-SCOPE -->
+        <section class="panel" id="meeting">
+            <h2>Meeting-to-Scope</h2>
+            <p class="hint">
+                Convert meeting notes into structured project requirements and scope.
+            </p>
+
+            <form id="meetingForm">
+                <label for="projectId">Project ID</label>
+                <input id="projectId" required value="demo-project" />
+
+                <label for="transcript">Meeting transcript / notes</label>
+                <textarea id="transcript" required
+                    placeholder="Paste your meeting transcript or notes here..."></textarea>
+
+                <button class="action" type="submit">Analyze Meeting</button>
+            </form>
+
+            <div class="result" id="meetingResult" aria-live="polite">
+                Meeting analysis will appear here.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        AI Tech Consultant Capstone · Human review required for important decisions
+    </footer>
+
+    <script>
+        // Switch between the three task tabs.
+        const tabs = document.querySelectorAll("[data-tab]");
+        const panels = document.querySelectorAll(".panel");
+
+        tabs.forEach(button => {
+            button.addEventListener("click", () => {
+                tabs.forEach(tab => tab.classList.remove("active"));
+                panels.forEach(panel => panel.classList.remove("active"));
+
+                button.classList.add("active");
+                document.getElementById(button.dataset.tab).classList.add("active");
+            });
+        });
+
+        // Safely create a text element.
+        function addText(parent, tag, text, className) {
+            const element = document.createElement(tag);
+            element.textContent = text || "";
+            if (className) element.className = className;
+            parent.appendChild(element);
+            return element;
+        }
+
+        // Send a JSON request to our dashboard backend.
+        async function sendRequest(url, body) {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body)
+            });
+
+            const contentType = response.headers.get("content-type") || "";
+            let data;
+
+            if (contentType.includes("application/json")) {
+                data = await response.json();
+            } else {
+                const text = await response.text();
+                throw new Error(
+                    "Expected JSON from the API but received another response. " +
+                    text.slice(0, 200)
+                );
+            }
+
+            if (!response.ok) {
+                throw new Error(data.detail || data.error || "Request failed");
+            }
+
+            return data;
+        }
+
+        // Display Knowledge Brain data as readable answer and source cards.
+        function showKnowledgeResult(data) {
+            const output = document.getElementById("knowledgeResult");
+            output.replaceChildren();
+
+            addText(output, "h3", "Answer");
+            addText(
+                output,
+                "p",
+                data.answer || "No answer was returned.",
+                "answer-text"
+            );
+
+            if (data.status) {
+                const status = document.createElement("span");
+                status.className = "status";
+                status.textContent = "Status: " + data.status;
+                output.appendChild(status);
+            }
+
+            if (Array.isArray(data.sources) && data.sources.length > 0) {
+                addText(output, "h3", "Sources");
+
+                data.sources.forEach((source, index) => {
+                    const card = document.createElement("article");
+                    card.className = "source-card";
+
+                    addText(
+                        card,
+                        "strong",
+                        (index + 1) + ". " + (source.title || "Untitled source")
+                    );
+
+                    if (source.excerpt) {
+                        addText(card, "p", source.excerpt);
+                    }
+
+                    if (source.url) {
+                        try {
+                            const url = new URL(source.url);
+                            if (url.protocol === "https:" || url.protocol === "http:") {
+                                const link = document.createElement("a");
+                                link.href = url.href;
+                                link.target = "_blank";
+                                link.rel = "noopener noreferrer";
+                                link.textContent = "Open source";
+                                card.appendChild(link);
+                            }
+                        } catch {
+                            // Ignore invalid source URLs.
+                        }
+                    }
+
+                    if (typeof source.relevance === "number") {
+                        addText(
+                            card,
+                            "p",
+                            "Relevance: " + Math.round(source.relevance * 100) + "%"
+                        );
+                    }
+
+                    output.appendChild(card);
+                });
+            } else {
+                addText(output, "p", "No source documents were returned.");
+            }
+
+            if (data.needs_human) {
+                addText(output, "p", "Human review is required.");
+            }
+
+            if (data.escalation_id) {
+                addText(output, "p", "Escalation reference: " + data.escalation_id);
+            }
+        }
+
+        // Knowledge Brain form.
+        document.getElementById("knowledgeForm").addEventListener(
+            "submit",
+            async event => {
+                event.preventDefault();
+
+                const output = document.getElementById("knowledgeResult");
+                output.textContent = "Searching the Knowledge Brain...";
+
+                try {
+                    const data = await sendRequest("/api/knowledge/query", {
+                        question: document.getElementById("question").value,
+                        top_k: Number(document.getElementById("topK").value)
+                    });
+
+                    showKnowledgeResult(data);
+                } catch (error) {
+                    output.textContent =
+                        "Could not get results.\n" +
+                        error.message +
+                        "\n\nCheck that the dashboard and Knowledge Brain servers are running.";
+                }
+            }
+        );
+
+        // Display meeting analysis in readable sections, not raw JSON.
+        function showMeetingResult(data) {
+            const output = document.getElementById("meetingResult");
+            output.replaceChildren();
+
+            addText(output, "h3", "Meeting Analysis");
+
+            const skipKeys = new Set(["requirements", "items", "risks", "assumptions"]);
+
+            function renderValue(parent, key, value) {
+                if (value === null || value === undefined || skipKeys.has(key)) return;
+
+                if (typeof value === "object") {
+                    const section = document.createElement("section");
+                    addText(section, "h4", key.replace(/_/g, " "));
+                    parent.appendChild(section);
+
+                    if (Array.isArray(value)) {
+                        const list = document.createElement("ul");
+                        value.forEach(item => {
+                            const li = document.createElement("li");
+                            li.textContent =
+                                typeof item === "object"
+                                    ? Object.entries(item)
+                                        .map(([k, v]) => k.replace(/_/g, " ") + ": " +
+                                            (typeof v === "object" ? JSON.stringify(v) : String(v)))
+                                        .join(" · ")
+                                    : String(item);
+                            list.appendChild(li);
+                        });
+                        section.appendChild(list);
+                    } else {
+                        Object.entries(value).forEach(([k, v]) => {
+                            renderValue(section, k, v);
+                        });
+                    }
+                    return;
+                }
+
+                const readableKey = key
+                    .replace(/_/g, " ")
+                    .replace(/\b\w/g, letter => letter.toUpperCase());
+
+                const paragraph = document.createElement("p");
+                const strong = document.createElement("strong");
+                strong.textContent = readableKey + ": ";
+                paragraph.appendChild(strong);
+                paragraph.appendChild(document.createTextNode(String(value)));
+                parent.appendChild(paragraph);
+            }
+
+            if (typeof data === "object" && data !== null) {
+                Object.entries(data).forEach(([key, value]) => {
+                    renderValue(output, key, value);
+                });
+            } else {
+                addText(output, "p", String(data));
+            }
+
+            addText(
+                output,
+                "p",
+                "Review the generated requirements and estimates before making project decisions."
+            );
+        }
+
+        // Meeting-to-Scope form.
+        document.getElementById("meetingForm").addEventListener(
+            "submit",
+            async event => {
+                event.preventDefault();
+
+                const output = document.getElementById("meetingResult");
+                output.textContent = "Analyzing meeting notes...";
+
+                try {
+                    const data = await sendRequest("/api/meeting/analyze", {
+                        project_id: document.getElementById("projectId").value,
+                        transcript: document.getElementById("transcript").value
+                    });
+
+                    showMeetingResult(data);
+                } catch (error) {
+                    output.textContent =
+                        "Could not analyze meeting.\n" +
+                        error.message +
+                        "\n\nCheck that the dashboard and Meeting-to-Scope servers are running.";
+                }
+            }
+        );
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+FICTIONAL ROLE-PLAY TRANSCRIPT — Meeting A: Website improvements
+Client: Our website search is slow and customers cannot find products easily.
+Client: We need filters for product type and price.
+Consultant: Do you have an example of the desired search behavior?
+Client: We want the mobile experience improved before launch, but we have not agreed on a date.
+Consultant: Is AI search mandatory or just an idea?
+Client: AI search is optional. Please investigate whether current settings can handle filters first.
+Open questions: product count, acceptance criteria, target date, budget, and current platform capabilities.

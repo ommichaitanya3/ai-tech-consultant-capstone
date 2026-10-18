@@ -1,0 +1,6 @@
+FICTIONAL ROLE-PLAY TRANSCRIPT — Meeting C: Follow-up to Meeting A
+Client: Please remove the optional AI search from the first release.
+Client: We still need product type filters, and we also want brand filters added.
+Client: The mobile improvements are still required, but the expected delivery date has moved earlier.
+Consultant: What is the confirmed new date?
+Client: We are discussing it internally and will confirm later. Do not treat the new date as approved yet.

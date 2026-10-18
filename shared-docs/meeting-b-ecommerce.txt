@@ -1,0 +1,6 @@
+FICTIONAL ROLE-PLAY TRANSCRIPT — Meeting B: E-commerce workflow
+Client: We need checkout changes and order notifications.
+Client: We want to add a payment provider, but we are not sure whether our current provider supports it.
+Consultant: Do you have provider documentation and test credentials?
+Client: Not yet. Please do not promise a launch date until the provider is checked.
+Open questions: payment provider, notification channels, security requirements, acceptance criteria, budget, and delivery date.
